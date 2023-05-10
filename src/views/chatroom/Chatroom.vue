@@ -4,17 +4,17 @@
         <a-button @click="send()">send</a-button>
         <a-button @click="disConnect()">disconnected</a-button>
         <a-row :gutter="20">
-            <a-col :span="18">
+            <a-col :span="20">
                 <a-card class="hcard">
                     <div v-for="(item, index) in data.msgs" :key="index"
                         :class="item.from !== 'sys' ? 'chatlistdiv' : 'chatlistdiv broadcast'">
                         <span v-if="item.from !== 'sys'">
                             <!-- <a-avatar :size="18">{{ item.from.slice(0, 1) }}</a-avatar> -->
                             <span>
-                                <a-avatar :size="22">{{ item.from.slice(0, 1) }}</a-avatar>
-                                {{ item.from }} :
-                                {{ item.content }}
-                                {{ moment(item.time).format('YYYY-MM-DD HH:mm:ss') }}
+                                <a-avatar style="margin-right: 5px;" :size="22">{{ item.from.slice(0, 1) }}</a-avatar>
+                                <span style="color: rgb(39, 148, 250);">{{ item.from }}</span> :
+                                <span>{{ item.content }}</span>
+                                <span style="float: right; font-size: 6px; color: rgb(151, 155, 159);vertical-align: text-bottom;">{{ moment(item.time).format('YYYY-MM-DD HH:mm:ss') }}</span>
                             </span>
                         </span>
                         <span v-else class="sys_content">
@@ -137,6 +137,7 @@ const send = () => {
 <style scoped>
 .chatlistdiv {
     margin: 8px;
+    padding: 8px;
     border: 1px solid greenyellow;
 }
 
